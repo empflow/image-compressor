@@ -27,5 +27,6 @@ export default async function processImg({
       width,
       height,
     })
+    .withMetadata()
     .toFile(pathToSaveTo);
 }

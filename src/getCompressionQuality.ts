@@ -6,5 +6,5 @@ export default function getCompressionQuality(byteLength: number) {
   // else if (sizeInMb > 1) quality = 65;
   // else if (sizeInMb > 0.5) quality = 70;
 
-  return 90;
+  return 100;
 }

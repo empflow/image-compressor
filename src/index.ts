@@ -2,24 +2,24 @@ import dotenv from "dotenv";
 dotenv.config();
 import fs from "fs";
 import getEnvVar from "./getEnvVar";
-import getNeededPaths from "./getNeededPaths";
+import getNeededPaths from "./pathGetters/getNeededPaths";
 import rmRfDir from "./rmRfDir";
-import createResultsDir from "./createResultsDir";
 import populateResultsDir from "./populateResultsDir";
 
 // 'result' is a directory with an 'init' image and a 'result' image
 
-console.log(getEnvVar("MODE"));
+export const previewMode = getEnvVar("MODE") === "preview";
+export const initFilesDirName = getEnvVar("INIT_DIR_NAME");
+export const resultsDirName = getEnvVar("RESULTS_DIR_NAME");
 
 (async () => {
-  const initFilesDir = getEnvVar("INIT_DIR_PATH");
-  const resultsFilesDir = getEnvVar("RESULTS_DIR_PATH");
-  const initImgsFileNames = fs.readdirSync(initFilesDir);
-  rmRfDir(resultsFilesDir);
+  const initImgsFileNames = fs.readdirSync(initFilesDirName);
+  rmRfDir(resultsDirName);
+  fs.mkdirSync(resultsDirName);
 
   initImgsFileNames.forEach((initImgFileName) => {
     const paths = getNeededPaths(initImgFileName);
-    createResultsDir(paths);
+    if (previewMode) fs.mkdirSync(paths.pathToResultSubdir as string);
     return populateResultsDir(paths);
   });
 })();

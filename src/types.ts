@@ -1,8 +1,8 @@
 export interface NeededPaths {
   pathToInitImg: string;
-  pathToResultsDir: string;
-  pathToInitImgInResultsDir: string;
-  pathToResultImgInResultsDir: string;
+  pathToResultSubdir: string | null;
+  pathToInitImgInResultSubdir: string | null;
+  pathToResultImgInResultSubdir: string | null;
 }
 
 export interface ImgDimensions {

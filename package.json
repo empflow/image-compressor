@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "MODE=noPreview ts-node-dev ./src/index.ts",
     "devWithPreview": "MODE=preview ts-node-dev ./src/index.ts",
+    "dev": "MODE=normal ts-node-dev ./src/index.ts",
     "build": "tsc -p ./tsconfig.json",
-    "start": "MODE=noPreview node ./dist/index.js",
-    "startWithPreview": "MODE=preview node ./dist/index.js"
+    "startWithPreview": "MODE=preview node ./dist/index.js",
+    "start": "MODE=normal node ./dist/index.js"
   },
   "keywords": [],
   "author": "",

@@ -5,14 +5,14 @@ import { ImgDimensions } from "./types";
 
 interface HandleImgProcessingParams {
   pathToInitImg: string;
-  pathToResultImgInResultsDir: string;
+  pathToResultImgInResultSubdir: string | null;
   qualityPercentage: number;
   dimensions: ImgDimensions;
 }
 
 export default async function handleImgProcessing({
   pathToInitImg,
-  pathToResultImgInResultsDir,
+  pathToResultImgInResultSubdir,
   qualityPercentage,
   dimensions,
 }: HandleImgProcessingParams) {
@@ -20,7 +20,7 @@ export default async function handleImgProcessing({
     processImg({
       dimensions,
       pathToInitImg,
-      pathToResultImgInResultsDir,
+      pathToResultImgInResultSubdir,
       qualityPercentage,
     });
   } catch (err) {
